@@ -1,0 +1,82 @@
+.basket-page{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .basket{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px #555;
+    background-color: #ffffff;
+    margin-bottom: 60px;
+  }
+
+  .section1{
+    width: 100%;
+    margin-bottom: 1%;
+    text-align: left; 
+    margin-left: 9%;
+    display: inline-block;
+}
+
+.label{
+    display: inline-block;
+    text-align: right;
+    margin-right: 2%;
+    font-weight: 400;
+  }
+
+  .removeButton{
+    display: inline-block;
+    text-align: right;
+    margin-left: 30%;
+    font-weight: 400;
+  }
+
+  .payment{
+      width: 100%;
+      margin-left: 60%;
+  }
+
+  .removeButton-button{
+    background-color: #d32b2b;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    padding: 8px 0px;
+    font-weight: lighter;
+    width: 150%;
+  }
+
+  .confirmButton{
+    background-color: #12af27;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    padding: 8px 0px;
+    font-weight: lighter;
+    width: 10%;
+  }
+
+  .cancelButton{
+    margin-left: 2%;
+    background-color: #d32b2b;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    padding: 8px 0px;
+    font-weight: lighter;
+    width: 10%;
+  }
+
+
+
+

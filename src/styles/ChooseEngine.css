@@ -1,0 +1,26 @@
+.chooseEngine-page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .reactTable{
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  .buttonEngine{
+    background-color: #519e8a;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    padding: 8px 0px;
+    font-weight: lighter;
+    width: 50%;
+  }
+

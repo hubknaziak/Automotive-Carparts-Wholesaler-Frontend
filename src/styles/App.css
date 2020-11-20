@@ -1,0 +1,102 @@
+.App {
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    justify-content:  space-around;
+    align-items: center;
+    min-height:  10vh;
+    background: darkmagenta;
+    color: white;
+}
+
+.nav-links{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+.navItem{
+    cursor: pointer;
+}
+
+.navItem:hover{
+    color: pink;
+}
+
+.Footer{
+    position: relative;
+    bottom: 0;
+    padding-top: 3em;
+    background-color: #efefef;
+    text-align: center;
+}
+
+.H2{
+    font-weight: lighter;
+}
+
+.Buttons {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Oils button{
+    background-color: #db1b1b;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+}
+
+.Accus button{
+    background-color: #db1b1b;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+}
+
+.Tools button{
+    background-color: #db1b1b;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+}
+
+.Tyres button{
+    background-color: #db1b1b;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+}

@@ -1,0 +1,217 @@
+.individual-form{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(19, 185, 226); */
+  }
+  
+  .form-individual{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px #555;
+    background-color: #ffffff;
+  }
+  
+  form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  h1 {
+    text-align: center;
+    width: 100%;
+    color: #111;
+    font-weight: lighter;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+  
+  /* label {
+    font-size: 1em;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: lighter;
+  } */
+  .label{
+    display: inline-block;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .email-label-Individual{
+    display: inline-block;
+    text-align: left;
+    font-weight: 400;
+    margin-right: 6.5%;
+  }
+
+  .label-apartment{
+    display: inline-block;
+    text-align: left;
+    font-weight: 400;
+    margin-left: 9%;
+  }
+
+  .label-postcode{
+    display: inline-block;
+    text-align: left;
+    font-weight: 400;
+    margin-right: 3%;
+  }
+
+  .label-city{
+    display: inline-block;
+    text-align: left;
+    font-weight: 400;
+    margin-left: 5%;
+  }
+
+  .label-country{
+    display: inline-block;
+    text-align: left;
+    font-weight: 400;
+    margin-left: 5%;
+  }
+
+  .label-password{
+    display: inline-block;
+    text-align: left;
+    font-weight: 400;
+    margin-right: 2.5%;
+  }
+
+  .label-repeat-password{
+    display: inline-block;
+    text-align: left;
+    font-weight: 400;
+    margin-left: 3.5%;
+    margin-right: 2.5%;
+  }
+  
+  input {
+    padding: 10px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #cfcfcf;
+  }
+  
+  input::placeholder {
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: #999;
+  }
+  
+  input.error {
+    border: 1px solid red;
+  }
+  
+  .errorMessage {
+    color: red;
+    font-size: 0.75em;
+    display: relative;
+  }
+  
+  .firstName, .lastName, .email, .phoneNumber-Individual ,.street-Individual  ,.house-Individual ,.postcode-Individual ,.password-Individual{
+    text-align: left;
+   margin-bottom: 2%;
+    width: 100%;
+  }
+
+
+
+  .firstName-input, .lastName-input, .email-input-Individual{
+    width: 85%;
+}
+
+.phoneNumber-input-Individual{
+  width: 81%;
+}
+
+.street-input-Individual{
+  margin-left: 4.5%;
+  width: 85%;
+}
+
+
+  .houseNumber-input-Individual{
+    margin-right: 1%;
+    width: 25%;
+  }
+
+  .apartmentNumber-input-Individual{
+    margin-left: 1%;
+    width: 25%;
+  }
+  
+  .postcode-input-Individual{
+   
+    width: 15%;
+  }
+
+  .city-input-Individual{
+    margin-left: 1%;
+    width: 20%;
+  }
+
+  .country-input-Individual{
+    margin-left: 1%;
+    width: 22.5%;
+  }
+
+  .password-input-Individual{
+    margin-left: 1%;
+    width: 30%;
+  }
+
+  .repeatPassword-input-Individual{
+    margin-left: 1%;
+    width: 30%;
+  }
+
+  
+  .signUp-individual {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .signUp-individual button {
+    background-color: #519e8a;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+  }
+  
+   .signUp-individual button:hover {
+    color: #519e8a;
+    background-color: #fff;
+    border: 2px solid #519e8a;
+  } 
+  
+  .createAccount small {
+    color: #999;
+    font-weight: lighter;
+  }
+  
+  .line1 {
+    color: black;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  

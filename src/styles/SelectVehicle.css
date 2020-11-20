@@ -1,0 +1,40 @@
+.chooseVehicle-page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .chooseVehicle{
+      height: 100%;
+      width: 50%;
+      margin-top: 20px;
+      margin-bottom: 100px;
+  }
+
+  .selectLabel{
+    font-size: large;
+    font-weight: 400;
+    display: flex;
+  }
+
+  .selectBar{
+    margin-bottom: 15px;
+  }
+  
+  .selectButton{
+    background-color: #519e8a;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    width: 30%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+  }

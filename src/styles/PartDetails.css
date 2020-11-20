@@ -1,0 +1,81 @@
+.partDetails-page{
+    margin-top: 7%;
+    margin-bottom: 10%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .partDetails{
+    width: 50%;
+    margin-right: 10%;
+  }
+  
+  .partName, .oeCode, .producer, .producerCode, .netPrice, .grossPrice, .quantity, .informations, .button-div{
+      text-align: left;
+      margin-left: 30%;
+      margin-bottom: 2%;
+  }
+
+  .partName-span{
+    text-align: left;
+    margin-left: 5%;
+}
+
+    .oeCode-span{
+    text-align: left;
+    margin-left: 7%;
+}
+
+    .producer-span{
+    text-align: left;
+    margin-left: 6.5%;
+}
+
+    .netPrice-span{
+    text-align: left;
+    margin-left: 6%;
+}
+.grossPrice-span{
+    text-align: left;
+    margin-left: 3.5%;
+}
+
+.quantity-input{
+    text-align: left;
+    margin-left: 6%;
+}
+ 
+  .label{
+    display: inline-block;
+    text-align: right;
+    margin-right: 5%;
+    font-weight: 400;
+  }
+
+  .label-inStock{
+    display: inline-block;
+    text-align: right;
+    margin-left: 2%;
+    margin-right: 1%;
+    font-weight: 400;
+  }
+
+ .button{
+    margin-top: 2%;
+    margin-bottom: 4%;
+    background-color: #4699b9;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    padding: 8px 0px;
+    font-weight: lighter;
+    width: 80%;
+ }
+
+ .informations-textarea{
+     margin-top: 2%;
+ }

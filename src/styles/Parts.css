@@ -1,0 +1,43 @@
+.partType-page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .partsPage{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .partType-list{
+
+      align-items: center;
+  }
+
+  .partType-items{
+    margin-right: 80px;
+    display: inline-block; 
+	text-align: left; 
+}
+
+  .partType-item{
+      margin-top: 15px;
+      font-size: larger;
+      cursor: pointer;
+  }
+
+  .partType-item:hover{
+    color: green;
+}
+
+
+
