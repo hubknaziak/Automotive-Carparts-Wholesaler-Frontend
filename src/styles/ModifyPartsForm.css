@@ -1,4 +1,4 @@
-.newParts-form{
+.modifyParts-form{
     height: 100vh;
     width: 100%;
     display: flex;
@@ -8,7 +8,7 @@
     /* background-color: rgb(19, 185, 226); */
   }
   
-  .form-newParts{
+  .form-modifyParts{
     width: 800px;
     display: flex;
     flex-direction: column;
@@ -28,18 +28,31 @@
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
 
-  .partType, .oe ,.nettoPrice, .informationsParts, .engineCodes, .modelNames, .generationNames{
+  .partTypeModify, .modifyoe ,.modifyNettoPrice, .modifyInformations{
     text-align: left;
     width: 100%;
     margin-bottom: 2%;
   }
 
-  .addPart{
+  .updatePart{
     width: 100%;
     align-items: center;
   }
 
-  .partType-label, .oe-label, .nettoPrice-label, .informations-label, .engineCodes-label, .modelNames-label, .genereationNames-label{
+  .findPart-label{
+    font-size: x-large;
+    display: inline-block;
+    text-align: right;
+    font-weight: 600;
+    margin-right: 0.25em;
+    margin-bottom: 1%;
+  }
+
+  .findPart-input{
+    width: 30%;
+  }
+
+  .modifyName-label, .modifyoe-label, .modifyNettoPrice-label, .modifyInformations-label{
     font-size: 1em;
     margin-bottom: 0.25em;
     margin-right: 0.25em;
@@ -47,14 +60,6 @@
     font-weight: normal;
   }
 
-  .name-label{
-    font-size: 1em;
-    margin-bottom: 0.25em;
-    margin-left: 8%;
-    margin-right: 0.25em;
-    color: #222;
-    font-weight: normal;
-  }
   
   .quantity-label{
     font-size: 1em;
@@ -65,7 +70,7 @@
     font-weight: normal;
   }
 
-  .producer-label, .producerCode-label{
+  .modifyProducer-label, .modifyProducerCode-label, .modifyGrossPrice-label, .modifyQuantity-label{
     font-size: 1em;
     margin-bottom: 0.25em;
     margin-left: 3%;
@@ -74,37 +79,45 @@
     font-weight: normal;
   }
 
-  .partType-input, .name-input, .nettoPrice-input{
+  .nettoPrice-input{
     width: 35%;
   }
 
-  .quantity-input{
-    width: 33.2%;
+  .modifyQuantity-input{
+    width: 15.5%;
     margin-left: 0.25em;
   }
 
-  .informations-input{
+  .modifyInformations-input{
     width: 83.5%;
   }
 
-  .engineCodes-input{
-    width: 83%;
+  .modifyName-input{
+    width: 89.5%;
   }
 
-  .modelNames-input{
-    width: 82.5%;
-  }
 
-  .generationNames-input{
-    width: 78.5%;
-  }
-
-  .addPart-button{
+  .updatePart-button{
     background-color: #519e8a;
     color: #fff;
     border: 2px solid #fff;
     border-radius: 10px;
-    width: 50%;
+    width: 40%;
+    margin-right: 5%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+  }
+
+  .deletePart-button{
+    background-color: #c01f1f;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 40%;
     margin-top: 1em;
     padding: 8px 0px;
     font-size: 1em;

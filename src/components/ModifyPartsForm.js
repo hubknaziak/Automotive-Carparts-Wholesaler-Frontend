@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import '../styles/IndividualForm.css';
+import '../styles/ModifyPartsForm.css';
 
 const formValid = ({formErrors, ...rest}) => {
   let valid = true;
@@ -7,10 +7,6 @@ const formValid = ({formErrors, ...rest}) => {
   Object.values(formErrors).forEach(val =>{
    if(val.length > 0){valid = false;}
   });
-
-//   Object.values(rest).forEach(val => {
-//     if(val === null){valid = false; console.log();}
-//   });
 
   return valid;
 };
@@ -56,14 +52,12 @@ class ModifyPartsForm extends Component{
 
   async putData(){
 
-    //var partId;
     if(formValid(this.state)){
       try{
         await fetch(`http://localhost:8080/updateSpecimenPart/${this.state.data[0].idSpecimenPart}`, {
           method: 'PUT',
           mode: 'cors',
           headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -94,7 +88,6 @@ class ModifyPartsForm extends Component{
         method: 'DELETE',
         mode: 'cors',
         headers: {
-          //'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
       });
@@ -108,7 +101,7 @@ class ModifyPartsForm extends Component{
     if(e.keyCode === 13) {this.findParts(e);}
 }
 
-  handleChange = e => { //sprawdzamy poprawność parametrów
+  handleChange = e => { 
     e.preventDefault();
     const {name, value } = e.target;
     let formErrors = this.state.formErrors;
@@ -136,10 +129,12 @@ render(){
 
   if(!partFound){
       return(
-          <div>
+          <div className="modifyParts-form">
+            <label for="findPart" className="findPart-label">Part OE/Producer Code Number</label>
               <input
+              id="findPart"
               type="text"
-              className="oe-input"
+              className="findPart-input"
               placeholder="OE / ProducerCode"
               name="partType"
               noValidate
@@ -150,27 +145,18 @@ render(){
   }
 else{
     return (
-      <div className="newParts-form">
-        <div className="form-newParts">
-          <h1>Fill in the parts data</h1>
+      <div className="modifyParts-form">
+        <div className="form-modifyParts">
+          <h1>Fill in the part data</h1>
           {this.state.data.map(specimenPart => (
           <form onSubmit={this.handleSubmit} noValidate>
-            <div className="partType">
-              {/* <label htmlFor="login">Login</label> */}
+            <div className="partTypeModify">
+              
+              <label for="modifyName" className="modifyName-label">Name</label>
               <input
+              id="modifyName"
               type="text"
-              className="partType-input"
-              placeholder="Part Type"
-              name="partType"
-              noValidate
-              onChange={this.handleChange}
-              />
-            </div>
-            <div className="name">
-              {/* <label htmlFor="password">Password</label> */}
-              <input
-              type="text"
-              className="name-input"
+              className="modifyName-input"
               placeholder={specimenPart.name}
               name="name"
               noValidate
@@ -178,11 +164,12 @@ else{
               />
             </div>
 
-            <div className="oe">
-              {/* <label htmlFor="password">Password</label> */}
+            <div className="modifyoe">
+              <label for="modifyoe" className="modifyoe-label">OE</label>
               <input
+              id="modifyoe"
               type="text"
-              className="oe-input"
+              className="modifyoe-input"
               placeholder={specimenPart.oe}
               name="oe"
               noValidate
@@ -191,51 +178,55 @@ else{
                {formErrors.oe.length > 0 &&(
                 <span className="errorMessage">{formErrors.oe}</span>
               )}
-            </div>
-
-            <div className="producer">
-              {/* <label htmlFor="password">Password</label> */}
+           
+              <label for="modifyProducer" className="modifyProducer-label">Producer</label>
               <input
+              id="modifyProducer"
               type="text"
-              className="producer-input"
+              className="modifyProducer-input"
               placeholder={specimenPart.producer}
               name="producer"
               noValidate
               onChange={this.handleChange}
               />
-            </div>
-
-            <div className="producerCode">
-              {/* <label htmlFor="password">Password</label> */}
+           
+              <label for="modifyProducerCode" className="modifyProducerCode-label">Producer Code</label>
               <input
+              id="modifyProducerCode"
               type="text"
-              className="producerCode-input"
+              className="modifyProducerCode-input"
               placeholder={specimenPart.producerCode}
               name="producerCode"
               noValidate
               onChange={this.handleChange}
               />
-            <input
+              </div>
+              <div className="modifyNettoPrice">
+              <label for="modifyNettoPrice" className="modifyNettoPrice-label">Netto Price</label>
+              <input
+              id="modifyNettoPrice"
               type="text"
-              className="nettoPrice-input"
+              className="modifyNettoPrice-input"
               placeholder={specimenPart.netPrice}
               name="nettoPrice"
               noValidate
               onChange={this.handleChange}
               />
-
+            <label for="modifyGrossPrice" className="modifyGrossPrice-label">Gross Price</label>
             <input
+            id="modifyGrossPrice"
               type="text"
-              className="grossPrice-input"
+              className="modifyGrossPrice-input"
               placeholder={specimenPart.grossPrice}
               name="grossPrice"
               noValidate
               onChange={this.handleChange}
               />
-              
+              <label for="modifyQuantity" className="modifyQuantity-label">Quantity</label>
             <input
+            id="modifyQuantity"
               type="text"
-              className="quantity-input"
+              className="modifyQuantity-input"
               placeholder={specimenPart.quantity}
               name="quantity"
               noValidate
@@ -243,11 +234,12 @@ else{
               />
             </div>
 
-            <div className="informations">
-              {/* <label htmlFor="password">Password</label> */}
+            <div className="modifyInformations">
+              <label for="modifyInformations" className="modifyInformations-label">Informations</label>
               <input
+              id="modifyInformations"
               type="text"
-              className="informations-input"
+              className="modifyInformations-input"
               placeholder={specimenPart.informations}
               name="informations"
               noValidate
@@ -255,12 +247,10 @@ else{
               />
             </div>
 
-            <div className="updatePart-individual">
-              <button type="submit" onClick={() => this.putData()}>Update part</button>
-            </div>
-
-            <div className="updatePart-individual">
-              <button type="submit" onClick={() => this.deletePart()}>Delete part</button>
+            <div className="updatePart">
+              <button className="updatePart-button" type="submit" onClick={() => this.putData()}>Update part</button>
+          
+              <button className="deletePart-button" type="submit" onClick={() => this.deletePart()}>Delete part</button>
             </div>
             
         </form> 

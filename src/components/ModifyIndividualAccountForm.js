@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import '../styles/IndividualForm.css';
+import '../styles/ModifyIndividualAccountForm.css';
 
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
 
@@ -9,10 +9,6 @@ const formValid = ({formErrors, ...rest}) => {
   Object.values(formErrors).forEach(val =>{
    if(val.length > 0){valid = false;}
   });
-
-//   Object.values(rest).forEach(val => {
-//     if(val === null){valid = false; console.log();}
-//   });
 
   return valid;
 };
@@ -54,7 +50,6 @@ class ModifyIndividualAccountForm extends Component{
   }
 
   async componentDidMount(){
-
     if(!localStorage.getItem("user")){
         var data = this.props.location.data;
         this.setState({firstName: data.personalData.firstName, lastName: data.personalData.last_Name, phoneNumber: data.personalData.phoneNumber,
@@ -65,7 +60,6 @@ class ModifyIndividualAccountForm extends Component{
         var idClient = localStorage.getItem("user");
         var response = await fetch(`http://localhost:8080/getAccountByClientId/${idClient}`);
         const data = await response.text();
-        //console.log(data);
         this.setState({email: data})
 
         var response2 = await fetch(`http://localhost:8080/getPersonalData/${idClient}`);
@@ -87,13 +81,11 @@ class ModifyIndividualAccountForm extends Component{
             method: 'PUT',
             mode: 'cors',
             headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
             },
             body: JSON.stringify({
             email: `${this.state.email}`,
             password: `${this.state.password}`,
-            //nip: "0"
             })
         });
 
@@ -101,7 +93,6 @@ class ModifyIndividualAccountForm extends Component{
             method: 'PUT',
             mode: 'cors',
             headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -117,19 +108,6 @@ class ModifyIndividualAccountForm extends Component{
             })
         });
 
-        // await fetch('http://localhost:8080/addClient', {
-        //     method: 'POST',
-        //     mode: 'cors',
-        //     headers: {
-        //     //'Accept': 'application/json',
-        //     'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //     companyName: "",
-        //     nip: "0"
-        //     })
-        // });
-
         }catch(e){
         console.log(e);
         }
@@ -143,12 +121,10 @@ class ModifyIndividualAccountForm extends Component{
         method: 'PUT',
         mode: 'cors',
         headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
     }).then(response => {
         if(response.status === 200){
-          //this.setState({messageEnable: false});
           console.log("OK");
         }
         else if(response.status === 500){
@@ -160,16 +136,6 @@ class ModifyIndividualAccountForm extends Component{
 
   handleSubmit = e =>{
     e.preventDefault();
-
-    // if(formValid(this.state.formErrors)){
-    //   console.log(`
-    //     Login: ${this.state.login}
-    //     Password: ${this.state.password}
-    //   `)
-    // }
-    // else{
-    //   console.error("FORM INVALID");
-    // }
   };
 
   handleChange = e => { //sprawdzamy poprawność parametrów
@@ -230,13 +196,14 @@ render(){
   }
   else{
     return (
-      <div className="individual-form">
-        <div className="form-individual">
+      <div className="modifyIndividual-form">
+        <div className="modifyForm-individual">
           <h1>Modify account data</h1>
           <form onSubmit={this.handleSubmit} noValidate>
-            <div className="firstName">
-              {/* <label htmlFor="login">Login</label> */}
+            <div className="modifyFirstName-ind">
+              <label for="firstName" className="modifyFirstName-label-ind">First Name</label>
               <input
+              id="firstName"
               type="text"
               className="firstName-input"
               placeholder={this.state.firstName}
@@ -248,9 +215,10 @@ render(){
                 <span className="errorMessage">{formErrors.firstName}</span>
               )}
             </div>
-            <div className="lastName">
-              {/* <label htmlFor="password">Password</label> */}
+            <div className="modifyLastName-ind">
+              <label for="lastName" className="modifyLastName-label-ind">Last Name</label>
               <input
+              id="lastName"
               type="text"
               className="lastName-input"
               placeholder={this.state.lastName}
@@ -262,26 +230,27 @@ render(){
                 <span className="errorMessage">{formErrors.lastName}</span>
               )}
             </div>
-
-            <div className="email">
-              {/* <label htmlFor="password">Password</label> */}
+              {!this.state.disableEmailAndPassword && (
+            <div className="modifyEmail-ind">
+              <label for="email" className="modifyemail-label-ind">Email</label>
               <input
+              id="email"
               type="text"
-              className="email-input"
+              className="email-ind-input"
               placeholder={this.state.email}
               name="email"
               noValidate
               onChange={this.handleChange}
-              hidden={this.state.disableEmailAndPassword}
               />
                {formErrors.email.length > 0 &&(
                 <span className="errorMessage">{formErrors.email}</span>
               )}
             </div>
-
-            <div className="phoneNumber">
-              {/* <label htmlFor="password">Password</label> */}
+            )}
+            <div className="phoneNumber-ind">
+              <label for="phoneNumber" className="modifyPhoneNumber-label-ind">Phone Number</label>
               <input
+              id="phoneNumber"
               type="number"
               className="phoneNumber-input"
               placeholder={this.state.phoneNumber}
@@ -294,11 +263,12 @@ render(){
               )}
             </div>
 
-            <div className="street">
-              {/* <label htmlFor="password">Password</label> */}
+            <div className="street-ind">
+              <label for="street" className="modifyStreet-label-ind">Street</label>
               <input
+              id="street"
               type="text"
-              className="street-input"
+              className="street-ind-input"
               placeholder={this.state.street}
               name="street"
               noValidate
@@ -307,7 +277,11 @@ render(){
               {formErrors.street.length > 0 &&(
                 <span className="errorMessage">{formErrors.street}</span>
               )}
-            <input
+              </div>
+              <div className="houseNumber-ind">
+              <label for="houseNumber" className="modifyHouseNumber-label-ind">House Number</label>
+              <input
+              id="houseNumber"
               type="text"
               className="houseNumber-input"
               placeholder={this.state.houseNumber}
@@ -318,7 +292,10 @@ render(){
                 {formErrors.houseNumber.length > 0 &&(
                 <span className="errorMessage">{formErrors.houseNumber}</span>
               )}
-            <input
+
+              <label for="apartmentNumber" className="modifyApartmentNumber-label-ind">Apartment Number</label>
+              <input
+              id="apartmentNumber"
               type="text"
               className="apartmentNumber-input"
               placeholder={this.state.apartmentNumber}
@@ -326,14 +303,12 @@ render(){
               noValidate
               onChange={this.handleChange}
               />
-               {/* {formErrors.apartmentNumber.length > 0 &&(
-                <span className="errorMessage">{formErrors.apartmentNumber}</span>
-              )} */}
             </div>
 
-            <div className="postcode">
-              {/* <label htmlFor="password">Password</label> */}
+            <div className="postcode-ind">
+              <label for="postcode" className="modifyPostcode-label-ind">Postcode</label>
               <input
+              id="postcode"
               type="text"
               className="postcode-input"
               placeholder={this.state.postcode}
@@ -344,7 +319,9 @@ render(){
                {formErrors.postcode.length > 0 &&(
                 <span className="errorMessage">{formErrors.postcode}</span>
               )}
+              <label for="city" className="modifyCity-label-ind">City</label>
             <input
+            id="city"
               type="text"
               className="city-input"
               placeholder={this.state.city}
@@ -355,11 +332,10 @@ render(){
                {formErrors.city.length > 0 &&(
                 <span className="errorMessage">{formErrors.city}</span>
               )}
-            </div>
-
-            <div className="country">
-              {/* <label htmlFor="password">Password</label> */}
+        
+              <label for="country" className="modifyCountry-label-ind">Country</label>
               <input
+              id="country"
               type="text"
               className="country-input"
               placeholder={this.state.country}
@@ -372,35 +348,36 @@ render(){
               )}
             </div>
 
-
-            <div className="password">
-              {/* <label htmlFor="password">Password</label> */}
+            {!this.state.disableEmailAndPassword && ( 
+            <div className="password-ind">
+              <label for="password" className="modifyPassword-label-ind">Password</label>
               <input
+              id="password"
               type="password"
               className="password-input"
               placeholder="Password"
               name="password"
               noValidate
               onChange={this.handleChange}
-              hidden={this.state.disableEmailAndPassword}
               />
                {formErrors.password.length > 0 &&(
                 <span className="errorMessage">{formErrors.password}</span>
               )}
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="repeatPassword" className="modifyRepeatPassword-label-ind">Repeat Password</label>
               <input
+              id="repeatPassword"
               type="password"
               className="repeatPassword-input"
               placeholder="Repeat Password"
               name="repeatPassword"
               noValidate
               onChange={this.handleChange}
-              hidden={this.state.disableEmailAndPassword}
               />
                {formErrors.repeatPassword.length > 0 &&(
                 <span className="errorMessage">{formErrors.repeatPassword}</span>
               )}
             </div>
+            )}
 
             <div className="signUp-individual">
               <button type="submit" onClick={() => this.putData()}>Modify Data</button>

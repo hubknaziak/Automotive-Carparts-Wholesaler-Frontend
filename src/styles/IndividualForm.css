@@ -127,22 +127,22 @@
 
 
   .firstName-input, .lastName-input, .email-input-Individual{
-    width: 85%;
+    width: 84%;
 }
 
 .phoneNumber-input-Individual{
-  width: 81%;
+  width: 80%;
 }
 
 .street-input-Individual{
   margin-left: 4.5%;
-  width: 85%;
+  width: 84%;
 }
 
 
   .houseNumber-input-Individual{
     margin-right: 1%;
-    width: 25%;
+    width: 24%;
   }
 
   .apartmentNumber-input-Individual{
@@ -152,27 +152,27 @@
   
   .postcode-input-Individual{
    
-    width: 15%;
+    width: 14%;
   }
 
   .city-input-Individual{
     margin-left: 1%;
-    width: 20%;
+    width: 19%;
   }
 
   .country-input-Individual{
     margin-left: 1%;
-    width: 22.5%;
+    width: 22%;
   }
 
   .password-input-Individual{
     margin-left: 1%;
-    width: 30%;
+    width: 29%;
   }
 
   .repeatPassword-input-Individual{
     margin-left: 1%;
-    width: 30%;
+    width: 29%;
   }
 
   
@@ -214,4 +214,17 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
+  .alert{
+    margin-top: 2%;
+    width: 100%;
+    text-align: center;
+  }
+  .red-star {
+    color: red;
+}
+
+.green-star {
+  color: green;
+}
   

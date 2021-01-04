@@ -22,6 +22,8 @@ class IndividualForm extends Component{
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
+      renderAlert: false,
+      renderConfirm: false,
       firstName: null,
       lastName: null,
       email: null,
@@ -54,6 +56,7 @@ class IndividualForm extends Component{
   async postData(){
 
     if(formValid(this.state)){
+      this.setState({renderAlert: false});
       try{
         await fetch('http://localhost:8080/addAccount', {
           method: 'POST',
@@ -99,9 +102,13 @@ class IndividualForm extends Component{
           })
         });
 
+        this.setState({renderConfirm: true});
       }catch(e){
         console.log(e);
       }
+    }
+    else{
+      this.setState({renderAlert: true});
     }
   }
 
@@ -233,7 +240,7 @@ render(){
           <h1>Sign Up</h1>
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="firstName">
-              <label for="firstName" className="label">First Name</label>
+              <label for="firstName" className="label">First Name<span class="red-star">*</span></label>
               <input
               id="firstName"
               type="text"
@@ -248,7 +255,7 @@ render(){
               )}
             </div>
             <div className="lastName">
-              <label for="lastName" className="label">Last Name</label>
+              <label for="lastName" className="label">Last Name<span class="red-star">*</span></label>
               <input
               id="lastName"
               type="text"
@@ -264,7 +271,7 @@ render(){
             </div>
 
             <div className="email">
-              <label for="email" className="email-label-Individual">Email</label>
+              <label for="email" className="email-label-Individual">Email<span class="red-star">*</span></label>
               <input
               id="email"
               type="text"
@@ -280,7 +287,7 @@ render(){
             </div>
 
             <div className="phoneNumber-Individual">
-              <label for="phoneNumber" className="label">Phone Number</label>
+              <label for="phoneNumber" className="label">Phone Number<span class="red-star">*</span></label>
               <input
               id="phoneNumber"
               type="number"
@@ -296,7 +303,7 @@ render(){
             </div>
 
             <div className="street-Individual">
-              <label for="street" className="label">Street</label>
+              <label for="street" className="label">Street<span class="red-star">*</span></label>
               <input
               id="street"
               type="text"
@@ -311,7 +318,7 @@ render(){
               )}
               </div>
               <div className="house-Individual">
-              <label for="houseNumber-Individual" className="label">House Number</label>
+              <label for="houseNumber-Individual" className="label">House Number<span class="red-star">*</span></label>
             <input
               id="houseNumber"
               type="text"
@@ -341,7 +348,7 @@ render(){
             </div>
 
             <div className="postcode-Individual">
-              <label for="postcode" className="label-postcode">Postcode</label>
+              <label for="postcode" className="label-postcode">Postcode<span class="red-star">*</span></label>
               <input
               id="postcode"
               type="text"
@@ -354,7 +361,7 @@ render(){
                {formErrors.postcode.length > 0 &&(
                 <span className="errorMessage">{formErrors.postcode}</span>
               )}
-              <label for="city-Individual" className="label-city">City</label>
+              <label for="city-Individual" className="label-city">City<span class="red-star">*</span></label>
             <input
             id="city"
               type="text"
@@ -368,7 +375,7 @@ render(){
                 <span className="errorMessage">{formErrors.city}</span>
               )}
       
-              <label for="country" className="label-country">Country</label>
+              <label for="country" className="label-country">Country<span class="red-star">*</span></label>
               <input
               id="country"
               type="text"
@@ -385,7 +392,7 @@ render(){
 
 
             <div className="password-Individual">
-              <label for="password" className="label-password">Password</label>
+              <label for="password" className="label-password">Password<span class="red-star">*</span></label>
               <input
               id="password"
               type="password"
@@ -398,7 +405,7 @@ render(){
                {formErrors.password.length > 0 &&(
                 <span className="errorMessage">{formErrors.password}</span>
               )}
-              <label for="repeatPassword-Individual" className="label-repeat-password">Repeat Password</label>
+              <label for="repeatPassword-Individual" className="label-repeat-password">Repeat Password<span class="red-star">*</span></label>
               <input
               id="repeatPassword"
               type="password"
@@ -416,6 +423,18 @@ render(){
             <div className="signUp-individual">
               <button type="submit" onClick={() => this.postData()}>Sign Up</button>
             </div>
+
+            {this.state.renderAlert && (
+              <div className="alert">
+                <span className="red-star">FIELDS ARE NOT CORRECTLY FIELD!</span>
+              </div>
+            )}
+
+            {this.state.renderConfirm && (
+              <div className="alert">
+                <span className="green-star">Account creacted. Now you can sign in.</span>
+              </div>
+            )}
             
         </form> 
     </div>

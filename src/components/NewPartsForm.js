@@ -213,7 +213,7 @@ render(){
           <h1>Fill in the parts data</h1>
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="partType">
-              <label for="partType">Part Type</label>
+              <label for="partType" className="partType-label">Part Type</label>
               <input
               id="partType"
               type="text"
@@ -227,7 +227,7 @@ render(){
                 <span className="errorMessage">{formErrors.partType}</span>
               )}
               
-              <label for="name">Name</label>
+              <label for="name" className="name-label">Name</label>
               <input
               id="name"
               type="text"
@@ -243,7 +243,7 @@ render(){
             </div>
 
             <div className="oe">
-              <label for="oe">OE</label>
+              <label for="oe" className="oe-label">OE</label>
               <input
               id="oe"
               type="text"
@@ -256,10 +256,8 @@ render(){
                {formErrors.oe.length > 0 &&(
                 <span className="errorMessage">{formErrors.oe}</span>
               )}
-            </div>
-
-            <div className="producer">
-              <label for="producer">Producer</label>
+        
+              <label for="producer" className="producer-label">Producer</label>
               <input
               id="producer"
               type="text"
@@ -272,10 +270,8 @@ render(){
                {formErrors.producer.length > 0 &&(
                 <span className="errorMessage">{formErrors.producer}</span>
               )}
-            </div>
-
-            <div className="producerCode">
-              <label for="producerCode">Producer Code</label>
+              
+              <label for="producerCode" className="producerCode-label">Producer Code</label>
               <input
               id="producerCode"
               type="text"
@@ -288,8 +284,10 @@ render(){
               {formErrors.producerCode.length > 0 &&(
                 <span className="errorMessage">{formErrors.producerCode}</span>
               )}
-              <label for="nettoPrice">Netto Price</label>
-            <input
+              </div>
+              <div className="nettoPrice">
+              <label for="nettoPrice" className="nettoPrice-label">Netto Price</label>
+              <input
               id="nettoPrice"
               type="text"
               className="nettoPrice-input"
@@ -301,9 +299,9 @@ render(){
                 {formErrors.nettoPrice.length > 0 &&(
                 <span className="errorMessage">{formErrors.nettoPrice}</span>
               )}
-              <label for="quantity">Quantity</label>
-            <input
-            id="quantity"
+              <label for="quantity" className="quantity-label">Quantity</label>
+              <input
+              id="quantity"
               type="text"
               className="quantity-input"
               placeholder="Quantity"
@@ -316,8 +314,8 @@ render(){
               ) }
             </div>
 
-            <div className="informations">
-              <label for="informations">Informations</label>
+            <div className="informationsParts">
+              <label for="informations" className="informations-label">Informations</label>
               <input
               id="informations"
               type="text"
@@ -330,7 +328,9 @@ render(){
                {formErrors.informations.length > 0 &&(
                 <span className="errorMessage">{formErrors.informations}</span>
               )}
-              <label for="engineCodes">Engine Codes</label>
+            </div>
+            <div className="engineCodes">
+              <label for="engineCodes" className="engineCodes-label">Engine Codes</label>
             <input
               id="engineCodes"
               type="text"
@@ -346,7 +346,7 @@ render(){
             </div>
 
             <div className="modelNames">
-              <label for="modelNames">Model Names</label>
+              <label for="modelNames" className="modelNames-label">Model Names</label>
               <input
               id="modelNames"
               type="text"
@@ -363,7 +363,7 @@ render(){
 
 
             <div className="generationNames">
-              <label for="generationNames">Generation Names</label>
+              <label for="generationNames" className="genereationNames-label">Generation Names</label>
               <input
               id="generationNames"
               type="text"
@@ -376,11 +376,10 @@ render(){
                {formErrors.generationNames.length > 0 &&(
                 <span className="errorMessage">{formErrors.generationNames}</span>
               )}
-              {/* <label htmlFor="password">Password</label> */}
             </div>
 
-            <div className="addPart-individual">
-              <button type="submit" onClick={() => this.postData()}>Add new part</button>
+            <div className="addPart">
+              <button className="addPart-button" type="submit" onClick={() => this.postData()}>Add new part</button>
             </div>
             
         </form> 

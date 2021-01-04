@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import '../styles/CompanyForm.css';
+import '../styles/ModifyCompanyAccountForm.css';
 
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
 
@@ -9,10 +9,6 @@ const formValid = ({formErrors, ...rest}) => {
   Object.values(formErrors).forEach(val =>{
    if(val.length > 0){valid = false;}
   });
-
-  // Object.values(rest).forEach(val => {
-  //   if(val === null){valid = false; console.log();}
-  // });
 
   return valid;
 };
@@ -53,8 +49,7 @@ class ModifyCompanyAccountForm extends Component{
   }
 
   async componentDidMount(){
-
-    if(this.props.location.data !== null){
+    if(!localStorage.getItem("user")){
       var data = this.props.location.data;
       this.setState({phoneNumber: data.personalData.phoneNumber,
           street: data.personalData.street, houseNumber: data.personalData.houseNumber, apartmentNumber: data.personalData.apartmentNumber, 
@@ -64,7 +59,6 @@ class ModifyCompanyAccountForm extends Component{
       var idClient = localStorage.getItem("user");
       var response = await fetch(`http://localhost:8080/getAccountByClientId/${idClient}`);
       const data = await response.text();
-      //console.log(data);
       this.setState({email: data})
 
       var response2 = await fetch(`http://localhost:8080/getPersonalData/${idClient}`);
@@ -78,7 +72,6 @@ class ModifyCompanyAccountForm extends Component{
 
   async putData(){
 
-    //const nip = this.state.NIP;
     var idClient = localStorage.getItem('user');
 
     if(formValid(this.state)){
@@ -87,13 +80,11 @@ class ModifyCompanyAccountForm extends Component{
           method: 'PUT',
           mode: 'cors',
           headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             email: `${this.state.email}`,
             password: `${this.state.password}`,
-            //nip:  parseInt(nip, 10)//`${this.state.NIP}`.parseInt()
           })
         });
 
@@ -101,7 +92,6 @@ class ModifyCompanyAccountForm extends Component{
           method: 'PUT',
           mode: 'cors',
           headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -115,18 +105,6 @@ class ModifyCompanyAccountForm extends Component{
           })
         });
 
-        // await fetch('http://localhost:8080/addClient', {
-        //   method: 'POST',
-        //   mode: 'cors',
-        //   headers: {
-        //     //'Accept': 'application/json',
-        //     'Content-Type': 'application/json'
-        //   },
-        //   body: JSON.stringify({
-        //     companyName: `${this.state.companyName}`,
-        //     nip: parseInt(nip, 10)//`${this.state.NIP}`
-        //   })
-        // });
 
       }catch(e){
         console.log(e);
@@ -144,12 +122,10 @@ class ModifyCompanyAccountForm extends Component{
         method: 'PUT',
         mode: 'cors',
         headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
     }).then(response => {
         if(response.status === 200){
-          //this.setState({messageEnable: false});
           console.log("OK");
         }
         else if(response.status === 500){
@@ -218,25 +194,28 @@ render(){
         <div className="form-company">
           <h1>Modify account data</h1>
           <form onSubmit={this.handleSubmit} noValidate>
+            {!this.state.disableEmailAndPassword &&(
             <div className="email-company">
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="email" className="email-company-label">Email</label>
               <input
+              id="email"
               type="text"
               className="email-input"
               placeholder={this.state.email}
               name="email"
               noValidate
               onChange={this.handleChange}
-              hidden={this.state.disableEmailAndPassword}
               />
                {formErrors.email.length > 0 &&(
                 <span className="errorMessage">{formErrors.email}</span>
               )}
             </div>
+            )}
 
-            <div className="phoneNumber">
-              {/* <label htmlFor="password">Password</label> */}
+            <div className="phoneNumber-comp">
+              <label for="phoneNumber" className="phoneNumber-comp-label">Phone Number</label>
               <input
+              id="phoneNumber"
               type="text"
               className="phoneNumber-input"
               placeholder={this.state.phoneNumber}
@@ -249,9 +228,10 @@ render(){
               )}
             </div>
 
-            <div className="street">
-              {/* <label htmlFor="password">Password</label> */}
+            <div className="street-comp">
+              <label for="street" className="street-comp-label">Street</label>
               <input
+              id="street"
               type="text"
               className="street-input"
               placeholder={this.state.street}
@@ -262,7 +242,11 @@ render(){
             {formErrors.street.length > 0 &&(
                 <span className="errorMessage">{formErrors.street}</span>
               )}
-            <input
+              </div>
+              <div className="houseNumber-comp">
+              <label for="houseNumber" className="houseNumber-comp-label">House Number</label>
+             <input
+             id="houseNumber"
               type="text"
               className="houseNumber-input"
               placeholder={this.state.houseNumber}
@@ -273,7 +257,9 @@ render(){
                {formErrors.houseNumber.length > 0 &&(
                 <span className="errorMessage">{formErrors.houseNumber}</span>
               )}
+              <label for="apartmentNumber" className="apartmentNumber-comp-label">Apartment Number</label>
             <input
+            id="apartmentNumber"
               type="text"
               className="apartmentNumber-input"
               placeholder={this.state.apartmentNumber}
@@ -281,14 +267,12 @@ render(){
               noValidate
               onChange={this.handleChange}
               />
-                {/* {formErrors.apartmentNumber.length > 0 &&(
-                <span className="errorMessage">{formErrors.apartmentNumber}</span>
-              )} */}
             </div>
 
-            <div className="postcode">
-              {/* <label htmlFor="password">Password</label> */}
+            <div className="postcode-comp">
+              <label for="postcode" className="postcode-comp-label">Postcode</label>
               <input
+              id="postcode"
               type="text"
               className="postcode-input"
               placeholder={this.state.postcode}
@@ -299,7 +283,9 @@ render(){
                 {formErrors.postcode.length > 0 &&(
                 <span className="errorMessage">{formErrors.postcode}</span>
               )}
+              <label for="city" className="city-comp-label">City</label>
             <input
+            id="city"
               type="text"
               className="city-input"
               placeholder={this.state.city}
@@ -310,11 +296,10 @@ render(){
                {formErrors.city.length > 0 &&(
                 <span className="errorMessage">{formErrors.city}</span>
               )}
-            </div>
-
-            <div className="country">
-              {/* <label htmlFor="password">Password</label> */}
+        
+              <label for="country" className="country-comp-label">Country</label>
               <input
+              id="country"
               type="text"
               className="country-input"
               placeholder={this.state.country}
@@ -327,34 +312,36 @@ render(){
               )}
             </div>
 
-            <div className="password">
-              {/* <label htmlFor="password">Password</label> */}
+            {!this.state.disableEmailAndPassword && (
+            <div className="password-comp">
+              <label for="password" className="password-comp-label">Password</label>
               <input
+              id="password"
               type="password"
               className="password-input"
               placeholder="Password"
               name="password"
               noValidate
               onChange={this.handleChange}
-              hidden={this.state.disableEmailAndPassword}
               />
                {formErrors.password.length > 0 &&(
                 <span className="errorMessage">{formErrors.password}</span>
               )}
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="repeatPassword" className="repeatPassword-comp-label">Repeat Password</label>
               <input
+              id="repeatPassword"
               type="password"
               className="repeatPassword-input"
               placeholder="Repeat Password"
               name="repeatPassword"
               noValidate
               onChange={this.handleChange}
-              hidden={this.state.disableEmailAndPassword}
               />
                 {formErrors.repeatPassword.length > 0 &&(
                 <span className="errorMessage">{formErrors.repeatPassword}</span>
               )}
             </div>
+            )}
 
             <div className="signUp-company">
               <button type="submit" onClick={() => this.putData()}>Modify Data</button>

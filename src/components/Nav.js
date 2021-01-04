@@ -117,7 +117,7 @@ render(){
 }
 
 showBasket(userLogged){
-    if((userLogged && this.state.changeSignButton) || (!userLogged && !this.state.changeSignButton)){
+    if((userLogged && this.state.changeSignButton && localStorage.getItem('user')) || (!userLogged && !this.state.changeSignButton && !localStorage.getItem('employee'))){
         return( 
             <Link style={navStyle} to="/basket">
                 <li className="navItem" to="/basket">Basket</li>
@@ -128,17 +128,13 @@ showBasket(userLogged){
 }
 
 changeSignButton(changeSignButton){
-    if(changeSignButton){
+    if(localStorage.getItem('user') || localStorage.getItem('employee')){
         console.log(localStorage);
         return <li className="navItem" onClick={ ()=> {localStorage.removeItem('user'); localStorage.removeItem('employee'); this.logout();
          this.props.handleChangeSignButton(false); this.props.handleUserLogged(false); this.setState({redirect: "/"})}} >SignOut</li>
-        //console.log(localStorage);
     }
-    // else if(changeSignButton){
-    //     console.log(localStorage);
-    //     return <li onClick={ ()=> {localStorage.removeItem('employee'); this.logout(); this.props.handleChangeSignButton(false);}}>SignOut</li>
-    // }
-    else if(!changeSignButton){
+  
+    else if(!localStorage.getItem('user') || !localStorage.getItem('employee')){
         return(
             <Link style={navStyle} to="/signIn">
                 <li className="navItem" to="/signIn">Sign In</li>
@@ -148,7 +144,7 @@ changeSignButton(changeSignButton){
 }
 
 showSettings(changeSignButton){
-    if(changeSignButton){
+    if(localStorage.getItem('user') || localStorage.getItem('employee')){
         return( 
             <Link style={navStyle} to="/settings">
                 <li className="navItem">Settings</li>

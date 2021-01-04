@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import '../styles/IndividualForm.css';
+import '../styles/DiscountCodes.css';
 
 class DiscountCodes extends Component{
   constructor(props){
@@ -10,7 +10,7 @@ class DiscountCodes extends Component{
     };
 }
 
-handleChange = e => { //sprawdzamy poprawność parametrów
+handleChange = e => {
     e.preventDefault();
     const {name, value } = e.target;
     this.setState({[name]: value});
@@ -21,7 +21,6 @@ async postCode(){
         method: 'POST',
         mode: 'cors',
         headers: {
-          //'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
     });
@@ -32,7 +31,6 @@ async deleteCode(){
         method: 'DELETE',
         mode: 'cors',
         headers: {
-          //'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
     });
@@ -42,31 +40,38 @@ render(){
 
   
     return(
-        <div>
+        <div className="discountCodes-page">
+            <div className="discountCodes-form">
             <h1>Manage discounts</h1>
-            <div>
-                <input 
-                    type="text"
-                    className="discount-input"
-                    placeholder="Discount code"
-                    name="discountCode"
-                    noValidate
-                    onChange={this.handleChange}
-                />
-                <input 
-                    type="text"
-                    className="discount-input"
-                    placeholder="Value"
-                    name="discountValue"
-                    noValidate
-                    onChange={this.handleChange}
-                />
+                <div className="discountCode">
+                <label for="discountCode" className="discountCode-label">Discount Code</label>
+                    <input 
+                        id="discountCode"
+                        type="text"
+                        className="discountCode-input"
+                        placeholder="Discount code"
+                        name="discountCode"
+                        noValidate
+                        onChange={this.handleChange}
+                    />
+                    </div>
+                    <div className="discountValue">
+                    <label for="discountValue" className="discountValue-label">Discount Code</label>
+                    <input 
+                        id="discountValue"
+                        type="text"
+                        className="discountValue-input"
+                        placeholder="Value"
+                        name="discountValue"
+                        noValidate
+                        onChange={this.handleChange}
+                    />
+                </div>
+                <div className="controlButtons">
+                    <button className="addCode-button" onClick={() => this.postCode()}>ADD CODE</button>
+                    <button className="deleteCode-button" onClick={() => this.deleteCode()}>REMOVE CODE</button>
+                </div>
             </div>
-            <div>
-                <button onClick={() => this.postCode()}>ADD CODE</button>
-                <button onClick={() => this.deleteCode()}>REMOVE CODE</button>
-            </div>
-        
         </div>
     )
 }

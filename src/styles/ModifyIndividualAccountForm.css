@@ -1,0 +1,180 @@
+.modifyIndividual-form{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(19, 185, 226); */
+  }
+  
+  .modifyForm-individual{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px #555;
+    background-color: #ffffff;
+  }
+  
+  
+  h1 {
+    text-align: center;
+    width: 100%;
+    color: #111;
+    font-weight: lighter;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+
+  .modifyFirstName-ind, .modifyLastName-ind ,.modifyEmail-ind, .phoneNumber-ind, .street-ind ,.houseNumber-ind ,.postcode-ind ,.password-ind{
+    text-align: left;
+    width: 100%;
+    margin-bottom: 2%;
+  }
+
+  .updatePart{
+    width: 100%;
+    align-items: center;
+  }
+
+  .findPart-label{
+    font-size: x-large;
+    display: inline-block;
+    text-align: right;
+    font-weight: 600;
+    margin-right: 0.25em;
+    margin-bottom: 1%;
+  }
+
+  .findPart-input{
+    width: 30%;
+  }
+
+  .modifyFirstName-label-ind, .modifyLastName-label-ind, .modifyPhoneNumber-label-ind, .modifyInformations-label{
+    font-size: 1em;
+    margin-bottom: 0.25em;
+    margin-right: 0.25em;
+    color: #222;
+    font-weight: normal;
+  }
+
+  
+  .modifyemail-label-ind{
+    font-size: 1em;
+    margin-right: 5%;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: normal;
+  }
+
+  .modifyStreet-label-ind{
+    font-size: 1em;
+    margin-right: 5%;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: normal;
+  }
+
+  .modifyHouseNumber-label-ind, .modifyPassword-label-ind{
+    font-size: 1em;
+    margin-right: 0.25em;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: normal;
+  }
+
+  .modifyApartmentNumber-label-ind{
+    font-size: 1em;
+    margin-right: 0.25em;
+    margin-left: 10.5%;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: normal;
+  }
+
+  .modifyPostcode-label-ind{
+    font-size: 1em;
+    margin-right: 0.25em;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: normal;
+  }
+
+  .modifyCity-label-ind{
+    font-size: 1em;
+    margin-right: 0.25em;
+    margin-left: 5%;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: normal;
+  }
+
+  .modifyCountry-label-ind{
+    font-size: 1em;
+    margin-right: 0.25em;
+    margin-left: 5%;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: normal;
+  }
+
+  .modifyRepeatPassword-label-ind{
+    font-size: 1em;
+    margin-right: 0.25em;
+    margin-left: 18%;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: normal;
+  }
+
+
+  .email-ind-input{
+    width: 85%;
+  }
+
+  .street-ind-input{
+    width: 84.7%;
+  }
+
+  .modifyInformations-input{
+    width: 83.5%;
+  }
+
+  .modifyName-input{
+    width: 89.5%;
+  }
+
+
+  .updatePart-button{
+    background-color: #519e8a;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 40%;
+    margin-right: 5%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+  }
+
+  .deletePart-button{
+    background-color: #c01f1f;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 40%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+  }
+
+  
+  

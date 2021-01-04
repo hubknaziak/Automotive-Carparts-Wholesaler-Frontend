@@ -22,6 +22,8 @@ class CompanyForm extends Component{
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
+      renderAlert: false,
+      renderConfirm: false,
       companyName: null,
       NIP: null,
       email: null,
@@ -57,12 +59,12 @@ class CompanyForm extends Component{
     const nip = this.state.NIP;
 
     if(formValid(this.state)){
+      this.setState({renderAlert: false})
       try{
         await fetch('http://localhost:8080/addAccount', {
           method: 'POST',
           mode: 'cors',
           headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -76,7 +78,6 @@ class CompanyForm extends Component{
           method: 'POST',
           mode: 'cors',
           headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -94,36 +95,26 @@ class CompanyForm extends Component{
           method: 'POST',
           mode: 'cors',
           headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             companyName: `${this.state.companyName}`,
-            nip: parseInt(nip, 10)//`${this.state.NIP}`
+            nip: parseInt(nip, 10)
           })
         });
 
+        this.setState({renderConfirm: true})
       }catch(e){
         console.log(e);
       }
     }
     else{
-      alert("Form is not correctly filled")
+      this.setState({renderAlert: true})
     }
   }
 
   handleSubmit = e =>{
     e.preventDefault();
-
-    // if(formValid(this.state)){
-    //   console.log(`
-    //     FirstName: ${this.state.companyName}
-    //     Password: ${this.state.password}
-    //   `)
-    // }
-    // else{
-    //   console.error("FORM INVALID");
-    // }
   };
 
   handleChange = e => { //sprawdzamy poprawność parametrów
@@ -189,14 +180,6 @@ class CompanyForm extends Component{
           formErrors.houseNumber = "";
         }
       break;
-      // case "apartmentNumber":
-      //   if(value.length === 0){
-      //     formErrors.apartmentNumber = "This field is required";
-      //   }
-      //   else{
-      //     formErrors.apartmentNumber = "";
-      //   }
-      // break;
       case "postcode":
         if(value.length === 0){
           formErrors.postcode = "This field is required";
@@ -261,8 +244,9 @@ render(){
           <h1>Sign Up</h1>
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="companyName">
-              {/* <label htmlFor="login">Login</label> */}
+              <label for="companyName" className="companyName-label">Company Name<span class="red-star">*</span></label>
               <input
+              id="companyName"
               type="text"
               className="companyName-input"
               placeholder="Company Name"
@@ -275,7 +259,7 @@ render(){
               )}
             </div>
             <div className="NIP">
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="NIP" className="NIP-label">NIP<span class="red-star">*</span></label>
               <input
               type="text"
               className="NIP-input"
@@ -290,8 +274,9 @@ render(){
             </div>
 
             <div className="email-company">
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="email-company" className="new-email-company-label">Email<span class="red-star">*</span></label>
               <input
+              id="email-company"
               type="text"
               className="email-input"
               placeholder="Email"
@@ -305,8 +290,9 @@ render(){
             </div>
 
             <div className="phoneNumber">
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="phoneNumber" className="phoneNumber-label">Phone Number<span class="red-star">*</span></label>
               <input
+              id="phoneNumber"
               type="text"
               className="phoneNumber-input"
               placeholder="Phone Number"
@@ -320,8 +306,9 @@ render(){
             </div>
 
             <div className="street">
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="street" className="street-label">Street<span class="red-star">*</span></label>
               <input
+              id="street"
               type="text"
               className="street-input"
               placeholder="Street"
@@ -332,7 +319,12 @@ render(){
             {formErrors.street.length > 0 &&(
                 <span className="errorMessage">{formErrors.street}</span>
               )}
+              </div>
+
+            <div className="houseNumber">
+            <label for="houseNumber" className="houseNumber-label">House number<span class="red-star">*</span></label>
             <input
+              id="houseNumber"
               type="text"
               className="houseNumber-input"
               placeholder="House Number"
@@ -343,7 +335,9 @@ render(){
                {formErrors.houseNumber.length > 0 &&(
                 <span className="errorMessage">{formErrors.houseNumber}</span>
               )}
+              <label for="apartmentNumber" className="apartmentNumber-label">Apartment number</label>
             <input
+              id="apartmentNumber"
               type="text"
               className="apartmentNumber-input"
               placeholder="Apartment Number"
@@ -351,14 +345,12 @@ render(){
               noValidate
               onChange={this.handleChange}
               />
-                {/* {formErrors.apartmentNumber.length > 0 &&(
-                <span className="errorMessage">{formErrors.apartmentNumber}</span>
-              )} */}
             </div>
-
+              
             <div className="postcode">
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="postcode" className="postcode-label">Postcode<span class="red-star">*</span></label>
               <input
+              id="postcode"
               type="text"
               className="postcode-input"
               placeholder="Postcode"
@@ -369,7 +361,9 @@ render(){
                 {formErrors.postcode.length > 0 &&(
                 <span className="errorMessage">{formErrors.postcode}</span>
               )}
-            <input
+              <label for="city" className="city-label">City<span class="red-star">*</span></label>
+              <input
+              id="city"
               type="text"
               className="city-input"
               placeholder="City"
@@ -380,11 +374,10 @@ render(){
                {formErrors.city.length > 0 &&(
                 <span className="errorMessage">{formErrors.city}</span>
               )}
-            </div>
-
-            <div className="country">
-              {/* <label htmlFor="password">Password</label> */}
+              
+              <label for="country" className="country-label">Country<span class="red-star">*</span></label>
               <input
+              id="country"
               type="text"
               className="country-input"
               placeholder="Country"
@@ -398,8 +391,9 @@ render(){
             </div>
 
             <div className="password">
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="password" className="password-label">Password<span class="red-star">*</span></label>
               <input
+              id="password"
               type="password"
               className="password-input"
               placeholder="Password"
@@ -410,8 +404,9 @@ render(){
                {formErrors.password.length > 0 &&(
                 <span className="errorMessage">{formErrors.password}</span>
               )}
-              {/* <label htmlFor="password">Password</label> */}
+              <label for="repeatPassword" className="repeatPassword-label">Repeat password<span class="red-star">*</span></label>
               <input
+              id="repeatPassword"
               type="password"
               className="repeatPassword-input"
               placeholder="Repeat Password"
@@ -427,6 +422,18 @@ render(){
             <div className="signUp-company">
               <button type="submit" onClick={() => this.postData()}>Sign Up</button>
             </div>
+
+            {this.state.renderAlert && (
+              <div className="alert">
+                <span className="red-star">FIELDS ARE NOT CORRECTLY FIELD!</span>
+              </div>
+            )}
+
+            {this.state.renderConfirm && (
+              <div className="alert">
+                <span className="green-star">Account creacted. Now you can sign in.</span>
+              </div>
+            )}
             
         </form> 
     </div>

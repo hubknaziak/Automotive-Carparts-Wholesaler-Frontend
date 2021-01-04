@@ -135,7 +135,6 @@ render(){
                     <label className="label">Quantity: {detailPayment.quantity}</label>
                 </div>
                 <div className="section1">
-                    <label className="label">Total cost: {item.totalCost}</label>
                     <div className="removeButton">
                         <button className="removeButton-button"  onClick={ () => this.removeDetailPayment(detailPayment.idDetailPayment)} >REMOVE</button>
                     </div>
@@ -143,6 +142,9 @@ render(){
             </div>
             ))}
             <div className="payment">
+                <div className="section1">
+                <label className="label">Total cost: {item.totalCost}</label>
+                </div>
                 <div className="section1">
                 <label className="label" for="paymentMethod">Payment Method: </label>
                 <select name="paymentMethod" id="paymentMethod" onChange={this.handlePaymentMethodChange}>

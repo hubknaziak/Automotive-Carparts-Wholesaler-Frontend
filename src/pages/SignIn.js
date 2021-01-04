@@ -21,8 +21,8 @@ const formValid = ({formErrors, ...rest}) => {
 class SignIn extends Component{
   constructor(props){
     super(props);
-    //this.postData = this.postData.bind(this);
     this.state = {
+      renderAlert: false,
       login: null,
       password: null,
       messageEnable: true,
@@ -38,14 +38,12 @@ class SignIn extends Component{
    async postData(){
 
     if(formValid(this.state)){
-      //let response;
-      //localStorage.removeItem('user');
+      this.setState({renderAlert: false});
       console.log(localStorage);
         await fetch('http://localhost:8080/login', {
           method: 'POST',
           mode: 'cors',
           headers: {
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -58,12 +56,10 @@ class SignIn extends Component{
           }
           else if(response.status === 200){
             this.setState({messageEnable: true, redirect: "/", responseStatus: 200});
-            this.props.changeSignButton(true);
-            this.props.userLogged(true);
+            
           }
           else if(response.status === 205){
             this.setState({messageEnable: true, redirect: "/adminPage", responseStatus: 205});
-            this.props.changeSignButton(true);
             //localStorage.setItem('employee', "ADMIN")
           }
         });
@@ -71,17 +67,19 @@ class SignIn extends Component{
           var clientId = await fetch(`http://localhost:8080/getAccountByEmail?email=${this.state.login}`);
           const data = await clientId.json();
           localStorage.setItem('user', data.toString() );
+          this.props.changeSignButton(true);
+          this.props.userLogged(true);
         }
         else if (this.state.responseStatus === 205){
           var employeeiD = await fetch(`http://localhost:8080/getAccountByEmail?email=${this.state.login}`);
           const data = await employeeiD.json();
-          localStorage.setItem('employee',  data.toString())
+          localStorage.setItem('employee',  data.toString());
+          this.props.changeSignButton(true);
         }
-        //console.log(data);
         console.log(localStorage);
     }
     else{
-      alert("Form is not correctly filled")
+      this.setState({renderAlert: true});
     }
   }
 
@@ -175,6 +173,12 @@ render(){
                 <button type="button" className="signUpButton" to="/signUp">Sign Up</button>
               </Link>
             </div>
+
+            {this.state.renderAlert && (
+              <div className="alert">
+                <span className="red-star">FIELDS ARE NOT CORRECTLY FIELD!</span>
+              </div>
+            )}
               </form> 
         </div>
       </div>

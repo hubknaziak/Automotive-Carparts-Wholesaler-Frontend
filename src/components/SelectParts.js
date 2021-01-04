@@ -9,7 +9,7 @@ class SelectParts extends Component{
         this.state = {
             items: [],
             isLoaded: false,
-            quantity: "0"
+            quantity: "1"
         };
     }
 
@@ -66,6 +66,10 @@ render(){
                             <div className="price">Gross price: {specimenPart.grossPrice}</div> 
                         </div>
                     ))}
+                        {/* <div key={item.specimenParts[0].idSpecimenPart}>
+                            <div className="quantity">In Stock: {item.specimenParts[0].quantity}</div>
+                            <div className="price">Gross price: {item.specimenParts[0].grossPrice}</div> 
+                        </div> */}
                     </div>
                     <div className="selectQuantity">
                         <label className="label" for="quantity">Quantity:</label>

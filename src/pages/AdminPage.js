@@ -67,6 +67,7 @@ render(){
             <div className="adminOption">
                     <button  className="adminButton" onClick={()=>{this.setState({showModifyAccountInput: !this.state.showModifyAccountInput})}}>MODIFY USER ACCOUNTS</button>
                     {this.state.showModifyAccountInput &&(
+                        <div>
                         <input
                             type="text"
                             className="modifyAccount-input"
@@ -75,6 +76,7 @@ render(){
                             noValidate
                             onKeyUp={this.handleKeyUp}
                         />
+                        </div>
                     )}
                     {this.state.renderModifyAccountIndividual && (
                         <Redirect  to={{ pathname: "/modifyIndividualAccountForm", data: this.state.data }} push={true} />
